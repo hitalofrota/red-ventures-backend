@@ -1,9 +1,10 @@
 import orders from "../dataBase-mok/orderDatabase.js";
 import proteins from "../dataBase-mok/proteinDataBase.js";
 import broths from "../dataBase-mok/brothDataBase.js";
+import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
-    static addOrder(req, res) {
+    static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
         
         const protein = proteins.find(prot => prot.id === proteinId);
@@ -13,14 +14,20 @@ class OrderRepository {
             return res.status(404).send({ message: "Alguns dos ingredientes nao foram encontrado" });
         }
 
-        const newOrder = {
-            id: orders.length + 1,
-            protein,
-            broth,
-        };
+        try {
+            const orderId = await OrderIdService.generateOrderId();
 
-        orders.push(newOrder);
-        res.status(201).json(`${newOrder.protein.name} and ${newOrder.broth.name}`);
+            const newOrder = {
+                orderId,
+                protein,
+                broth,
+            };
+
+            orders.push(newOrder);
+            res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name}`);
+        } catch (error) {
+            res.status(500).send({ message: "Erro ao gerar orderId", error: error.message });
+        }
     }
 
     //OBS:
