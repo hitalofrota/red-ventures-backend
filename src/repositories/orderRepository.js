@@ -10,6 +10,10 @@ class OrderRepository {
         const protein = proteins.find(prot => prot.id === proteinId);
         const broth = broths.find(brot => brot.id === brothId);
 
+        if(!protein || !broth){
+            res.status(400).send({error: "no protein or broth was found, check if the ID is correct"});
+        }
+
         try {
             const orderId = await OrderIdService.generateOrderId();
 
