@@ -1,14 +1,19 @@
-import proteinDataBase from "../dataBase-mok/proteinDataBase";
+import protein from "../dataBase-mok/proteinDataBase.js";
 
 class ProteinRepository {
-    static getAllproteinDataBase() {
-        return proteinDataBase;
+    static getAllproteinDataBase(req, res) {
+        res.json(protein); // Enviar a resposta como JSON
     }
     
-    static getProteinById(id) {
-        return proteinDataBase.find(broth => broth.id === id);
-    }
-    
+    static getProteinById(req, res) {
+        const id = req.params.id;
+        const foundProtein = protein.find(p => p.id === id);
+        if (foundProtein) {
+            res.json(foundProtein);
+        } else {
+            res.status(404).send({ message: "Erro ao procurar a proteina" });
+        }   
+    }  
     //OBS:
     //metodos abaixo nao utilizados pela regra de negocio do projeto
     //foi inserito ao projeto para caso, em um futuro, houver alguma implementacao

@@ -1,4 +1,4 @@
-import BrothRepository from "../repositories/brothRepository";
+import BrothRepository from "../repositories/brothRepository.js";
 
 class BrothController {
     static findAllBroths = BrothRepository.getAllbrothDataBase;

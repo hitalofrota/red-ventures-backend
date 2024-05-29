@@ -1,14 +1,19 @@
-import brothDataBase from "../dataBase-mok/databrothDataBase";
+import broths from "../dataBase-mok/brothDataBase.js";
 
 class BrothRepository {
-    static getAllbrothDataBase() {
-        return brothDataBase;
+    static getAllbrothDataBase(req, res) {
+        res.json(broths); 
     }
     
-    static getBrothById(id) {
-        return brothDataBase.find(broth => broth.id === id);
+    static getBrothById(req, res) {
+        const id = req.params.id;
+        const foundBroth = broths.find(p => p.id === id);
+        if (foundBroth) {
+            res.json(foundBroth);
+        } else {
+            res.status(404).send({ message: "Erro ao procurar a sopa" });
+        }
     }
-    
     //OBS:
     //metodos abaixo nao utilizados pela regra de negocio do projeto
     //foi inserito ao projeto para caso, em um futuro, houver alguma implementacao
