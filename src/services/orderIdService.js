@@ -10,9 +10,12 @@ class OrderIdService {
                     'x-api-key': process.env.X_API_KEY
                 }
             });
+            if(!response){
+                return res.status(403).send({error: "x-api-key header missing"});
+            }
             return response.data.orderId;
         } catch (error) {
-            throw new Error(`Error generating order ID: ${error.message}`);
+            res.status(500).send({error: "could not place order"});
         }
     }
 }
