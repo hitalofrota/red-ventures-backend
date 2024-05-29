@@ -1,4 +1,4 @@
-const brothDataBase = [
+const protein = [
     {
         id: '1',
         imageInactive: 'path/to/imageInactive1.jpg',
@@ -17,4 +17,4 @@ const brothDataBase = [
     }
 ];
 
-export default brothDataBase;
+export default protein;

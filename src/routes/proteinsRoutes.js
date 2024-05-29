@@ -1,5 +1,5 @@
 import express from "express";
-import ProteinController from "../controllers/proteinsController";
+import ProteinController from "../controllers/proteinsController.js";
 
 const router = express.Router();
 

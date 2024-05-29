@@ -1,4 +1,4 @@
-import ProteinRepository from "../repositories/proteinRepository";
+import ProteinRepository from "../repositories/proteinRepository.js";
 
 class ProteinController {
     static findAllProteins = ProteinRepository.getAllproteinDataBase;
