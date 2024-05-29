@@ -10,10 +10,6 @@ class OrderRepository {
         const protein = proteins.find(prot => prot.id === proteinId);
         const broth = broths.find(brot => brot.id === brothId);
 
-        if (!protein || !broth) {
-            return res.status(404).send({ message: "Alguns dos ingredientes nao foram encontrado" });
-        }
-
         try {
             const orderId = await OrderIdService.generateOrderId();
 
@@ -24,9 +20,9 @@ class OrderRepository {
             };
 
             orders.push(newOrder);
-            res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name}`);
+            res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
         } catch (error) {
-            res.status(500).send({ message: "Erro ao gerar orderId", error: error.message });
+            res.status(400).send({error: "both brothId and proteinId are required"});
         }
     }
 
