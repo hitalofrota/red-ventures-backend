@@ -5,18 +5,18 @@ class ProteinRepository {
         return proteinDataBase;
     }
     
-    static getBrothById(id) {
+    static getProteinById(id) {
         return proteinDataBase.find(broth => broth.id === id);
     }
     
     //OBS:
     //metodos abaixo nao utilizados pela regra de negocio do projeto
     //foi inserito ao projeto para caso, em um futuro, houver alguma implementacao
-    static addBroth(newBroth) {
+    static addProtein(newBroth) {
         proteinDataBase.push(newBroth);
     }
     
-    static updateBroth(id, updatedBroth) {
+    static updateProtein(id, updatedBroth) {
         const index = proteinDataBase.findIndex(broth => broth.id === id);
         if (index !== -1) {
             proteinDataBase[index] = { ...proteinDataBase[index], ...updatedBroth };
@@ -25,7 +25,7 @@ class ProteinRepository {
         return null;
     }
     
-    static deleteBroth(id) {
+    static deleteProtein(id) {
         const index = proteinDataBase.findIndex(broth => broth.id === id);
         if (index !== -1) {
             return proteinDataBase.splice(index, 1);
