@@ -7,8 +7,12 @@ class OrderRepository {
     static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
 
+        console.log("ProteinID",proteinId, "BrothID", brothId)
+
         const protein = proteins.find(prot => prot.id === proteinId);
         const broth = broths.find(brot => brot.id === brothId);
+
+        console.log("Protein",protein, "Broth", broth)
 
         if (!protein || !broth) {
             return res.status(400).send({ error: "no protein or broth was found, check if the ID is correct" });
