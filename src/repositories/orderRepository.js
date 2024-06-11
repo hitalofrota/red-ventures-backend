@@ -6,12 +6,12 @@ import OrderIdService from "../services/orderIdService.js";
 class OrderRepository {
     static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
-        
+
         const protein = proteins.find(prot => prot.id === proteinId);
         const broth = broths.find(brot => brot.id === brothId);
 
-        if(!protein || !broth){
-            res.status(400).send({error: "no protein or broth was found, check if the ID is correct"});
+        if (!protein || !broth) {
+            return res.status(400).send({ error: "no protein or broth was found, check if the ID is correct" });
         }
 
         try {
@@ -24,9 +24,9 @@ class OrderRepository {
             };
 
             orders.push(newOrder);
-            res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
+            return res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
         } catch (error) {
-            res.status(400).send({error: "both brothId and proteinId are required"});
+            return res.status(500).send({ error: "an error occurred while creating the order" });
         }
     }
 

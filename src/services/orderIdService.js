@@ -4,10 +4,13 @@ import dotenv from "dotenv";
 class OrderIdService {
     static async generateOrderId() {
         dotenv.config();
+        const URL_SITE = process.env.URL_SITE 
+        const X_API_KEY = process.env.X_API_KEY 
+
         try {
-            const response = await axios.post(process.env.URL_SITE, {}, {
+            const response = await axios.post(URL_SITE, {}, {
                 headers: {
-                    'x-api-key': process.env.X_API_KEY
+                    'x-api-key': X_API_KEY
                 }
             });
             if(!response){
