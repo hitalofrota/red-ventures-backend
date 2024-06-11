@@ -38,7 +38,7 @@ class OrderRepository {
     }
 
     static getOrderById(req, res) {
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         const order = orders.find(o => o.id === id);
         if (order) {
             res.json(order);
