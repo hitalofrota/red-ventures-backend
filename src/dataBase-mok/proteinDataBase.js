@@ -1,4 +1,4 @@
-const protein = [
+const proteins = [
     {
         id: '1',
         imageInactive: 'path/to/imageInactive1.jpg',
@@ -17,4 +17,4 @@ const protein = [
     }
 ];
 
-export default protein;
+export default proteins;
