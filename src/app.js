@@ -8,6 +8,10 @@ app.use(cors());
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.status(200).send("Projeto Teste Red Ventures s2");
+});
+
 routes(app);
 
 export default app;
