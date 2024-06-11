@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 class OrderIdService {
     static async generateOrderId() {
         dotenv.config();
-        const URL_SITE = process.env.URL_SITE 
-        const X_API_KEY = process.env.X_API_KEY 
+        const URL_SITE = `https://api.tech.redventures.com.br/orders/generate-id`
+        const X_API_KEY = `ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf`
 
         try {
             const response = await axios.post(URL_SITE, {}, {

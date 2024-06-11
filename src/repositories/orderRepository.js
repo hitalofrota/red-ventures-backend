@@ -19,8 +19,8 @@ class OrderRepository {
 
             const newOrder = {
                 orderId,
-                protein: "1",
-                broth: "1",
+                protein,
+                broth
             };
 
             orders.push(newOrder);
