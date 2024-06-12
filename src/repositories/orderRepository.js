@@ -5,20 +5,21 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteins, broths } = req.body;
+        const { proteinId, brothId } = req.body;
 
-        if (!proteins || !broths) {
-            return res.status(400).json({ error: req.body});
+        if (!proteinId || !brothId) {
+            console.log('Request body:', req.body); // Adicione este log para depuração
+            return res.status(400).json({ error: 'proteinId and brothId are required' });
         }
 
-        const protein = proteins.find(prot => prot.id === proteins);
-        const broth = broths.find(brot => brot.id === broths);
+        const protein = proteins.find(prot => prot.id === proteinId);
+        const broth = broths.find(brot => brot.id === brothId);
 
         if (!protein) {
             return res.status(404).json({ error: 'Protein not found' });
         }
           
-          if (!broth) {
+        if (!broth) {
             return res.status(404).json({ error: 'Broth not found' });
         }
 
@@ -26,20 +27,19 @@ class OrderRepository {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
+                id: orderId, // Adicione o ID ao novo pedido
                 protein,
                 broth
             };
 
             orders.push(newOrder);
-            return res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
+            return res.status(201).json(newOrder);
         } catch (error) {
+            console.error('Error creating order:', error); // Adicione este log para depuração
             return res.status(500).send({ error: "an error occurred while creating the order" });
         }
     }
 
-    //OBS:
-    //metodos abaixo nao utilizados pela regra de negocio do projeto
-    //foi inserito ao projeto para caso, em um futuro, houver alguma implementacao
     static getAllOrders(req, res) {
         res.json(orders);
     }
