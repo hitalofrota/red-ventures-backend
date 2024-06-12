@@ -22,10 +22,11 @@ class OrderRepository {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
-                orderId,
                 protein,
                 broth
             };
+
+            console.log("New", newOrder)
 
             orders.push(newOrder);
             return res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
