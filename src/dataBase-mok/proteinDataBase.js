@@ -1,7 +1,7 @@
 const proteins = [
     {
         id: '1',
-        imageInactive: '',
+        imageInactive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         imageActive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         name: 'Proteina 1',
         description: 'Description for Broth 1',
@@ -9,7 +9,7 @@ const proteins = [
     },
     {
         id: '2',
-        imageInactive: '',
+        imageInactive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         imageActive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         name: 'Proteina 2',
         description: 'Description for Broth 2',
