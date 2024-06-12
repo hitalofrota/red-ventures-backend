@@ -1,7 +1,7 @@
-import orders from "../dataBase-mok/orderDatabase.js";
 import proteins from "../dataBase-mok/proteinDataBase.js";
 import broths from "../dataBase-mok/brothDataBase.js";
 import OrderIdService from "../services/orderIdService.js";
+import orders from "../dataBase-mok/orderDatabase.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
@@ -39,20 +39,6 @@ class OrderRepository {
         } catch (error) {
             console.error('Error creating order:', error);
             return res.status(500).send({ error: "an error occurred while creating the order" });
-        }
-    }
-
-    static getAllOrders(req, res) {
-        res.json(orders);
-    }
-
-    static getOrderById(req, res) {
-        const id = req.params.id;
-        const order = orders.find(o => o.id === id);
-        if (order) {
-            res.json(order);
-        } else {
-            res.status(404).send({ message: "Order not found" });
         }
     }
 }
