@@ -5,14 +5,14 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId } = req.body;
+        const { proteins, broths } = req.body;
 
-        if (!proteinId || !brothId) {
+        if (!proteins || !broths) {
             return res.status(400).json({ error: req.body});
         }
 
-        const protein = proteins.find(prot => prot.id === proteinId);
-        const broth = broths.find(brot => brot.id === brothId);
+        const protein = proteins.find(prot => prot.id === proteins);
+        const broth = broths.find(brot => brot.id === broths);
 
         if (!protein) {
             return res.status(404).json({ error: 'Protein not found' });
