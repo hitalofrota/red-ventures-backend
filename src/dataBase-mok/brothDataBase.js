@@ -1,4 +1,4 @@
-const broths = [
+const teste = [
     {
         id: '1',
         imageInactive: `https://drive.google.com/file/d/1SJEBHOcP3z3Zc3qhA9lO8H2Wo99IXUm6/view?usp=sharing`,
@@ -24,5 +24,7 @@ const broths = [
         price: 20.0
     }
 ];
+
+const broths = teste.flat()
 
 export default broths;

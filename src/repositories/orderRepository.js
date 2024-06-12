@@ -7,8 +7,8 @@ class OrderRepository {
     static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
 
-        const protein = proteins.find(prot => prot.id === proteinId[0]);
-        const broth = broths.find(brot => brot.id === brothId[0]);
+        const protein = proteins.find(prot => prot.id === proteinId);
+        const broth = broths.find(brot => brot.id === brothId);
 
         if(!protein || !broth){
             return res.status(400).send({ error: "protein or broth null" })
