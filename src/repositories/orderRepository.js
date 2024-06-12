@@ -5,8 +5,8 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const proteinId = req.body.proteinId
-        const brothId = req.body.brothId;
+        const proteinId  = req.body.proteinId
+        const  brothId  = req.body.brothId;
 
         if (!proteinId || !brothId ) {
             return res.status(400).json({ error: 'proteinId and brothId are required' });
@@ -27,15 +27,18 @@ class OrderRepository {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
-                orderId,
                 protein,
                 broth
             };
 
             orders.push(newOrder);
-            return res.status(201).json(newOrder);
+            return res.status(201).json({
+                id: orderId,
+                description: newOrder.broth.name + " and " + newOrder.protein.name,
+                image: ""
+            });
         } catch (error) {
-            console.error('Error creating order:', error); // Adicione este log para depuração
+            console.error('Error creating order:', error);
             return res.status(500).send({ error: "an error occurred while creating the order" });
         }
     }
