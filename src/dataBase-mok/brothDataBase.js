@@ -2,7 +2,7 @@ const broths = [
     {
         id: '1',
         imageInactive: `https://drive.google.com/file/d/1SJEBHOcP3z3Zc3qhA9lO8H2Wo99IXUm6/view?usp=sharing`,
-        imageActive: `https://drive.google.com/file/d/1KOCyEv5NCSNw_3hxJtJ_xpFeiKjgWPk5/view?usp=sharing`,
+        imageActive: `https://drive.google.com/file/d/1fyHfQOkMNrauHeiS8xyvkXD9EJQqvpUd/view?usp=sharing`,
         name: 'Sopa Low Carb',
         description: 'Sopa detox que irá transformar o seu físico',
         price: 10.0
