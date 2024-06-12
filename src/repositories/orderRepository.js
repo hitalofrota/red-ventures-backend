@@ -8,7 +8,7 @@ class OrderRepository {
         const { proteinId, brothId } = req.body;
 
         if (!proteinId || !brothId) {
-            return res.status(400).json({ error: 'proteinId and brothId are required' });
+            return res.status(400).json({ error: req.body});
         }
 
         const protein = proteins.find(prot => prot.id === proteinId);
