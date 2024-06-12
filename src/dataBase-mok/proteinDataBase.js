@@ -1,4 +1,4 @@
-const teste = [
+const proteins = [
     {
         id: '1',
         imageInactive: 'path/to/imageInactive1.jpg',
@@ -16,7 +16,5 @@ const teste = [
         price: 15.0
     }
 ];
-
-const proteins = teste.flat()
 
 export default proteins;

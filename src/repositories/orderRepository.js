@@ -7,11 +7,19 @@ class OrderRepository {
     static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
 
+        if (!proteinId || !brothId) {
+            return res.status(400).json({ error: 'proteinId and brothId are required' });
+        }
+
         const protein = proteins.find(prot => prot.id === proteinId);
         const broth = broths.find(brot => brot.id === brothId);
 
-        if(!protein || !broth){
-            return res.status(400).send({ error: "protein or broth null" })
+        if (!protein) {
+            return res.status(404).json({ error: 'Protein not found' });
+        }
+          
+          if (!broth) {
+            return res.status(404).json({ error: 'Broth not found' });
         }
 
         try {
