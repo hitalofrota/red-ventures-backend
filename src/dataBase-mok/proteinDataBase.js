@@ -2,7 +2,7 @@ const proteins = [
     {
         id: '1',
         imageInactive: '',
-        imageActive: `https://drive.google.com/file/d/1NVOS-40XA0p8bbnk93RhqOSbEyMnRh_g/view?usp=drive_link`,
+        imageActive: `https://drive.google.com/file/d/1NVOS-40XA0p8bbnk93RhqOSbEyMnRh_g/view?usp=sharing`,
         name: 'Proteina 1',
         description: 'Description for Broth 1',
         price: 10.0
