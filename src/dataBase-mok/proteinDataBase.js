@@ -2,7 +2,7 @@ const proteins = [
     {
         id: '1',
         imageInactive: '',
-        imageActive: `https://drive.google.com/uc?export=view&id=1NVOS-40XA0p8bbnk93RhqOSbEyMnRh_g`,
+        imageActive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         name: 'Proteina 1',
         description: 'Description for Broth 1',
         price: 10.0
@@ -10,7 +10,7 @@ const proteins = [
     {
         id: '2',
         imageInactive: '',
-        imageActive: `https://drive.google.com/uc?export=view&id=1NVOS-40XA0p8bbnk93RhqOSbEyMnRh_g`,
+        imageActive: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS43-iA7blZz05VBoHjcPmVq2B1xj-XR6MQJCDymoqpySK0qGyD1zHODkhOP7PloFTQ96o&usqp=CAU`,
         name: 'Proteina 2',
         description: 'Description for Broth 2',
         price: 15.0
