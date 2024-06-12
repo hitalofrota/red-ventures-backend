@@ -12,11 +12,11 @@ const options = {
       },
       servers: [
         {
-          url: 'http://localhost:3001/',
+          url: 'http://localhost:3001',
           description: 'Servidor Local',
         },
         {
-          url: 'https://red-ventures-backend.vercel.app/',
+          url: 'https://red-ventures-backend.vercel.app',
           description: 'Servidor de Produção',
         },
       ],
