@@ -1,0 +1,173 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+  description: Documentation for my API
+
+servers:
+  - url: https://red-ventures-backend.vercel.app/
+    description: Local server
+  - url: https://red-ventures-backend.vercel.app/
+    description: Production server
+
+components:
+  schemas:
+    OrderRequest:
+      type: object
+      required:
+        - proteinId
+        - brothId
+      properties:
+        proteinId:
+          type: string
+        brothId:
+          type: string
+    OrderResponse:
+      type: object
+      required:
+        - id
+        - description
+        - image
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+      example:
+        id: "1"
+        description: "Deu bom!!"
+        image: "imagemQualquer.svg"
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+      example:
+        error: "Deu ruim meu chapa!!"
+    Broth:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - price
+      properties:
+        id:
+          type: string
+        imageInactive:
+          type: string
+        imageActive:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+      example:
+        id: "1"
+        imageInactive: "https://tech.redventures.com.br/icons/salt/inactive.svg"
+        imageActive: "https://tech.redventures.com.br/icons/salt/active.svg"
+        name: "Salt"
+        description: "Simple like the seawater, nothing more"
+        price: 10.0
+    Protein:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - price
+      properties:
+        id:
+          type: string
+        imageInactive:
+          type: string
+        imageActive:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+      example:
+        id: "1"
+        imageInactive: "https://tech.redventures.com.br/icons/pork/inactive.svg"
+        imageActive: "https://tech.redventures.com.br/icons/pork/active.svg"
+        name: "Chasu"
+        description: "A sliced flavourful pork meat with a selection of season vegetables."
+        price: 10.0
+
+tags:
+  - name: Broths
+    description: 
+  - name: Proteins
+    description: 
+  - name: Orders
+    description: 
+
+paths:
+  /broths:
+    get:
+      summary: Get all broths
+      tags:
+        - Broths
+      responses:
+        '200':
+          description: A list of broths
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Broth'
+  /proteins:
+    get:
+      summary: Get all proteins
+      tags:
+        - Proteins
+      responses:
+        '200':
+          description: A list of proteins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Protein'
+  /orders:
+    post:
+      summary: Create a new order
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: The order was successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
