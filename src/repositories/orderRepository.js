@@ -8,7 +8,6 @@ class OrderRepository {
         const { proteinId, brothId} = req.params.id;
 
         if (!proteinId || !brothId) {
-            console.log('Request body:', req.body); // Adicione este log para depuração
             return res.status(400).json({ error: 'proteinId and brothId are required' });
         }
 
