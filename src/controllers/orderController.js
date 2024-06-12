@@ -1,12 +1,13 @@
 import OrderRepository from "../repositories/orderRepository.js";
 
 class OrderController {
-    static createOrder = OrderRepository.addOrder;
-    //OBS:
-    //metodos abaixo nao utilizados pela regra de negocio do projeto
-    //foi inserito ao projeto para caso, em um futuro, houver alguma implementacao
-    static findAllOrder = OrderRepository.getAllOrders;
-    static findOneOrder = OrderRepository.getOrderById;
+    static async createOrder(req, res) {
+        try {
+            await OrderRepository.addOrder(req, res);
+        } catch (error) {
+            res.status(500).send({ error: "An error occurred while creating the order" });
+        }
+    }
 }
 
 export default OrderController;
