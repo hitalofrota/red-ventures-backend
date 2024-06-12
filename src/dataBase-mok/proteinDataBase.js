@@ -1,16 +1,16 @@
 const proteins = [
     {
         id: '1',
-        imageInactive: 'path/to/imageInactive1.jpg',
-        imageActive: 'path/to/imageActive1.jpg',
+        imageInactive: '',
+        imageActive: `https://www.svgrepo.com/show/48239/user-online.svg`,
         name: 'Proteina 1',
         description: 'Description for Broth 1',
         price: 10.0
     },
     {
         id: '2',
-        imageInactive: 'path/to/imageInactive2.jpg',
-        imageActive: 'path/to/imageActive2.jpg',
+        imageInactive: '',
+        imageActive: `https://www.svgrepo.com/show/48239/user-online.svg`,
         name: 'Proteina 2',
         description: 'Description for Broth 2',
         price: 15.0
