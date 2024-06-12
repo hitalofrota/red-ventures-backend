@@ -5,14 +5,24 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId } = req.body;
 
-        const protein = proteins.find(prot => prot.id === proteinId);
-        const broth = broths.find(brot => brot.id === brothId);
-
-        if(!proteinId || !brothId){
-            return res.status(400).send({ error: "protein or broth null" })
+        const protein =  {
+            id: '1',
+            imageInactive: 'path/to/imageInactive1.jpg',
+            imageActive: 'path/to/imageActive1.jpg',
+            name: 'Proteina 1',
+            description: 'Description for Broth 1',
+            price: 10.0
         }
+        
+        const broth = {
+            id: '1',
+            imageInactive: `https://drive.google.com/file/d/1SJEBHOcP3z3Zc3qhA9lO8H2Wo99IXUm6/view?usp=sharing`,
+            imageActive: `https://drive.google.com/file/d/1fyHfQOkMNrauHeiS8xyvkXD9EJQqvpUd/view?usp=sharing`,
+            name: 'Sopa Low Carb',
+            description: 'Sopa detox que irá transformar o seu físico',
+            price: 10.0
+        };
 
         try {
             const orderId = await OrderIdService.generateOrderId();
