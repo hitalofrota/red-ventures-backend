@@ -5,28 +5,21 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId } = req.body;
+        const { protein, broth } = req.body;
 
-        const valor = [parseInt(proteinId) - 1]
-        const valor2 = [parseInt(brothId) - 1]
-
-        const protein = proteins.find(prot => prot.id === valor);
-        const broth = broths.find(brot => brot.id === valor2);
-
-        if (!protein || !broth) {
-            return res.status(400).send({ error: "no protein or broth was found, check if the ID is correct" });
-        }
+        const proteinId = proteins.find(prot => prot.id === protein);
+        const brothId = broths.find(brot => brot.id === broth);
 
         try {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
-                protein,
-                broth
+                proteinId,
+                brothId
             };
 
             orders.push(newOrder);
-            return res.status(201).json(`id: ${orderId} description: ${newOrder.broth.name} and ${newOrder.protein.name} image:`);
+            return res.status(201).json(`id: ${orderId} description: ${newOrder.brothId.name} and ${newOrder.proteinId.name} image:`);
         } catch (error) {
             return res.status(500).send({ error: "an error occurred while creating the order" });
         }
