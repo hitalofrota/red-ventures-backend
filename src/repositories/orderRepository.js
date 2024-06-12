@@ -5,7 +5,7 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId} = req.body;
+        const { proteinId= "1", brothId= "1"} = req.body;
 
         if (!proteinId || !brothId) {
             return res.status(400).json({ error: 'proteinId and brothId are required' });
