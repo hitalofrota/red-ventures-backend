@@ -5,7 +5,7 @@ import OrderIdService from "../services/orderIdService.js";
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId } = req.body;
+        const { proteinId = 1, brothId = 1} = req.body;
 
         if (!proteinId || !brothId) {
             console.log('Request body:', req.body); // Adicione este log para depuração
@@ -27,7 +27,6 @@ class OrderRepository {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
-                id: orderId, // Adicione o ID ao novo pedido
                 protein,
                 broth
             };
