@@ -4,12 +4,6 @@ info:
   version: 1.0.0
   description: Documentation for my API
 
-servers:
-  - url: https://red-ventures-backend.vercel.app/
-    description: Local server
-  - url: https://red-ventures-backend.vercel.app/
-    description: Production server
-
 components:
   schemas:
     OrderRequest:
