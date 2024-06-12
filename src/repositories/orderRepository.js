@@ -34,7 +34,7 @@ class OrderRepository {
             return res.status(201).json({
                 id: orderId,
                 description: newOrder.broth.name + " and " + newOrder.protein.name,
-                image: ""
+                image: `https://cdn-icons-png.flaticon.com/512/4436/4436481.png`
             });
         } catch (error) {
             console.error('Error creating order:', error);

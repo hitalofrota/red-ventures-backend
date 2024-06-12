@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 class OrderIdService {
     static async generateOrderId() {
         dotenv.config();
+        //mokei as credenciais do .env por conta de conflitos ao fazer a request
         const URL_SITE = `https://api.tech.redventures.com.br/orders/generate-id`
         const X_API_KEY = `ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf`
 
