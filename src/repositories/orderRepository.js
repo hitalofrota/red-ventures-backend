@@ -5,8 +5,8 @@ import orders from '../dataBase-mok/orderDatabase.js';
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const { proteinId, brothId } = req.body;
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAA", req.body)
+        const proteinId = "1"
+        const brothId = "1"
 
         if (!proteinId || !brothId) {
             return res.status(400).json({ error: 'proteinId and brothId are required' });
