@@ -1,13 +1,13 @@
-import proteins from "../dataBase-mok/proteinDataBase.js";
-import broths from "../dataBase-mok/brothDataBase.js";
-import OrderIdService from "../services/orderIdService.js";
-import orders from "../dataBase-mok/orderDatabase.js";
+import proteins from '../dataBase-mok/proteinDataBase.js';
+import broths from '../dataBase-mok/brothDataBase.js';
+import OrderIdService from '../services/orderIdService.js';
+import orders from '../dataBase-mok/orderDatabase.js';
 
 class OrderRepository {
     static async addOrder(req, res) {
-        const {proteinId, brothId} = req.body
+        const { proteinId, brothId } = req.body;
 
-        if (!proteinId || !brothId ) {
+        if (!proteinId || !brothId) {
             return res.status(400).json({ error: 'proteinId and brothId are required' });
         }
 
@@ -17,7 +17,7 @@ class OrderRepository {
         if (!protein) {
             return res.status(404).json({ error: 'Protein not found' });
         }
-          
+
         if (!broth) {
             return res.status(404).json({ error: 'Broth not found' });
         }
@@ -33,12 +33,12 @@ class OrderRepository {
             orders.push(newOrder);
             return res.status(201).json({
                 id: orderId,
-                description: newOrder.broth.name + " and " + newOrder.protein.name,
-                image: `https://cdn-icons-png.flaticon.com/512/4436/4436481.png`
+                description: newOrder.broth.name + ' and ' + newOrder.protein.name,
+                image: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png'
             });
         } catch (error) {
             console.error('Error creating order:', error);
-            return res.status(500).send({ error: "an error occurred while creating the order" });
+            return res.status(500).send({ error: 'An error occurred while creating the order' });
         }
     }
 }
