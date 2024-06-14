@@ -1,11 +1,9 @@
 import OrderIdService from '../services/orderIdService.js';
 import Protein from '../models/proteinsModel.js';
 import Broth from '../models/brothsModel.js';
-import mongoose from 'mongoose';
 
 class OrderRepository {
     static async addOrder(req, res) {
-        console.log("Request Body:", req.body);
         const { proteinId, brothId } = req.body;
 
         if (!proteinId || !brothId) {
@@ -13,25 +11,16 @@ class OrderRepository {
             return res.status(400).json({ error: 'proteinId and brothId are required' });
         }
 
-        // Verificar se os IDs têm o formato correto
-        if (!mongoose.Types.ObjectId.isValid(proteinId) || !mongoose.Types.ObjectId.isValid(brothId)) {
-            return res.status(400).json({ error: 'Invalid proteinId or brothId' });
-        }
-
         try {
-            // Converter IDs para ObjectId
-            const proteinObjectId = new mongoose.Types.ObjectId(proteinId);
-            const brothObjectId = new mongoose.Types.ObjectId(brothId);
+            const resultadoProtein = await Protein.findOne({ id: proteinId });
+            const resultadoBroth = await Broth.findOne({ id: brothId });    
 
-            const protein = await Protein.findById(proteinObjectId);
-            const broth = await Broth.findById(brothObjectId);
-
-            if (!protein) {
+            if (!resultadoProtein) {
                 console.error('Protein not found:', proteinId);
                 return res.status(404).json({ error: 'Protein not found' });
             }
 
-            if (!broth) {
+            if (!resultadoBroth) {
                 console.error('Broth not found:', brothId);
                 return res.status(404).json({ error: 'Broth not found' });
             }
@@ -39,15 +28,13 @@ class OrderRepository {
             const orderId = await OrderIdService.generateOrderId();
 
             const newOrder = {
-                protein,
-                broth
+                resultadoProtein,
+                resultadoBroth
             };
-
-            console.log('New Order:', newOrder);
 
             return res.status(201).json({
                 id: orderId,
-                description: `${newOrder.broth.name} and ${newOrder.protein.name}`,
+                description: `${newOrder}`,
                 image: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png'
             });
         } catch (error) {
