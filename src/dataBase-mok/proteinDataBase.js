@@ -1,9 +1,8 @@
-import proteinsData from './proteins.json';
+import proteinsData from "./proteins.json" assert { type: 'json' };
 
 const proteins = proteinsData.proteins.map(protein => {
     return {
         ...protein,
-        price: parseFloat(protein.price)  // Garantindo que o preço seja um número
     };
 });
 

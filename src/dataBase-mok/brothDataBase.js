@@ -1,9 +1,8 @@
-import brothsData from './broths.json';
+import brothsData from './broths.json' assert { type: 'json' };
 
 const broths = brothsData.broths.map(broth => {
     return {
         ...broth,
-        price: parseFloat(broth.price)
     };
 });
 
