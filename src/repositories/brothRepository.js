@@ -1,8 +1,14 @@
-import broths from "../dataBase-mok/brothDataBase.js";
+import Broth from "../models/brothsModel.js";
 
 class BrothRepository {
-    static getAllbrothDataBase(req, res) {
-        res.json(broths); 
+    static getAllbrothDataBase = async (req, res) => {
+        try {
+            const broths = await Broth.find({});
+            res.status(200).json(broths)
+        } catch (erro) {
+            console.error(error);
+            res.status(500).json({ error: "Error finding comments" });
+        }
     }
     
     static getBrothById(req, res) {

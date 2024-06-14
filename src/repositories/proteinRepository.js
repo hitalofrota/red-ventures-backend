@@ -1,8 +1,14 @@
-import protein from "../dataBase-mok/proteinDataBase.js";
+import Protein from "../models/proteinsModel.js";
 
 class ProteinRepository {
-    static getAllproteinDataBase(req, res) {
-        res.json(protein); // Enviar a resposta como JSON
+    static getAllproteinDataBase = async (req, res) => {
+        try {
+            const proteins = await Protein.find({});
+            res.status(200).json(proteins);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Error finding comments" });
+        }
     }
     
     static getProteinById(req, res) {
