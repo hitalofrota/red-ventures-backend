@@ -1,14 +1,10 @@
-const proteins = {
-    "broths": [
-        {
-            "id": "1",
-            "imageInactive": "https://tech.redventures.com.br/assets/android-icon-192x192-eR__0JOi.png",
-            "imageActive": "https://tech.redventures.com.br/assets/android-icon-192x192-eR__0JOi.png",
-            "name": "Sopa Low Carb",
-            "description": "Sopa detox que irá transformar o seu físico",
-            "price": 10.0
-        }
-    ]
-}
+import proteinsData from './proteins.json';
+
+const proteins = proteinsData.proteins.map(protein => {
+    return {
+        ...protein,
+        price: parseFloat(protein.price)  // Garantindo que o preço seja um número
+    };
+});
 
 export default proteins;
