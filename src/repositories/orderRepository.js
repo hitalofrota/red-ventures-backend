@@ -15,6 +15,8 @@ class OrderRepository {
             const resultadoProtein = await Protein.findOne({ id: proteinId });
             const resultadoBroth = await Broth.findOne({ id: brothId });    
 
+            console.log("Resultado", resultadoProtein, resultadoBroth)
+
             if (!resultadoProtein) {
                 console.error('Protein not found:', proteinId);
                 return res.status(404).json({ error: 'Protein not found' });
