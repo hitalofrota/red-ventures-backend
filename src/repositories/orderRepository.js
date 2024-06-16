@@ -9,8 +9,8 @@ class OrderRepository {
 
         console.log(req.body);
 
-        proteinId = "1";
-        brothId = "1"
+        proteinId = 1;
+        brothId = 1
 
         console.log("proteinId", proteinId, "brothId", brothId)
 
