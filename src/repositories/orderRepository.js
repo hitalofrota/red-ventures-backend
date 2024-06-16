@@ -5,6 +5,14 @@ import Broth from '../models/brothsModel.js';
 class OrderRepository {
     static async addOrder(req, res) {
         const { proteinId, brothId } = req.body;
+        console.log("req.headers", req.headers['x-api-key']);
+
+        console.log(req.body);
+
+        proteinId = "1";
+        brothId = "1"
+
+        console.log("proteinId", proteinId, "brothId", brothId)
 
         if (!proteinId || !brothId) {
             console.error('Missing proteinId or brothId');
@@ -15,7 +23,7 @@ class OrderRepository {
             const resultadoProtein = await Protein.findOne({ id: proteinId });
             const resultadoBroth = await Broth.findOne({ id: brothId });    
 
-            console.log("Resultado", resultadoProtein, resultadoBroth)
+            console.log("Resultado", resultadoProtein.id, resultadoBroth.id)
 
             if (!resultadoProtein) {
                 console.error('Protein not found:', proteinId);
@@ -29,6 +37,8 @@ class OrderRepository {
 
             const orderId = await OrderIdService.generateOrderId();
 
+            console.log("Order: ", orderId)
+
             const newOrder = {
                 resultadoProtein,
                 resultadoBroth
@@ -36,7 +46,7 @@ class OrderRepository {
 
             return res.status(201).json({
                 id: orderId,
-                description: `${newOrder}`,
+                description: `${newOrder           }`,
                 image: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png'
             });
         } catch (error) {
