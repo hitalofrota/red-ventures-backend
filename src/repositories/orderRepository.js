@@ -9,9 +9,6 @@ class OrderRepository {
 
         console.log(req.body);
 
-        proteinId = 1;
-        brothId = 1
-
         console.log("proteinId", proteinId, "brothId", brothId)
 
         if (!proteinId || !brothId) {

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const DB_CONNECTION = `mongodb+srv://ecommerce:ecommerce@ecommerce.9h7cvnn.mongodb.net/`
+const DB_CONNECTION = process.env.DB_CONNECTION;
 
 mongoose.connect(DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
